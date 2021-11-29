@@ -1,0 +1,40 @@
+version: '3.7'
+
+services: 
+    postgresql13:
+        image: postgres:13
+        #restart: always
+        env_file:
+            - ./postgresql/.env.dev
+        volumes: 
+            - postgresql-data:/var/lib/postgresql/data
+    odoo14:
+        build: ./odoo14
+        #restart: always
+        depends_on:
+            - postgresql13
+        volumes: 
+            - odoo14-data:/var/lib/odoo/
+            - ./odoo14/extra-addons/:/mnt/extra-addons/
+            #- ./odoo14/odoo/:/etc/odoo/
+            
+        #ports:
+        #    - 8069:8069
+        env_file:
+            - ./odoo14/.env.dev
+    nginx:
+        build: ./nginx
+        #restart: always
+        ports:
+            - 80:80
+            - 443:443
+        volumes:
+            - ./nginx/ssl/:/etc/ssl/nginx/
+            - ./nginx/sites-enabled/:/etc/nginx/conf.d/
+        links:
+            - odoo14
+        #depends_on:
+        #    - odoo14
+volumes: 
+    postgresql-data:
+    odoo14-data:
