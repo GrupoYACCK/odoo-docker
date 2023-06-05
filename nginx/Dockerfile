@@ -1,3 +1,3 @@
-FROM nginx:1.18
+FROM nginx:1.25
 
 RUN mkdir -p /etc/ssl/nginx/
