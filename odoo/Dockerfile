@@ -1,4 +1,4 @@
-FROM odoo:17.0
+FROM odoo:18.0
 
 # change to the root user
 USER root
