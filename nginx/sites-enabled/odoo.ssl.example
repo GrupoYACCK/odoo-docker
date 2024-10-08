@@ -1,8 +1,8 @@
 #odoo server
-upstream odoo17 {
+upstream odoo18 {
     server odoo:8069;
 }
-upstream odoo17chat {
+upstream odoo18chat {
     server odoo:8072;
 }
 
@@ -42,13 +42,13 @@ server {
 
     # Redirect longpoll requests to odoo longpolling port
     location /longpolling {
-        proxy_pass http://odoo17chat;
+        proxy_pass http://odoo18chat;
     }
 
     # Redirect requests to odoo backend server
     location / {
     proxy_redirect off;
-        proxy_pass http://odoo17;
+        proxy_pass http://odoo18;
     }
 
     # common gzip
