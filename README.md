@@ -6,13 +6,13 @@ El repositorio, es una base para las soluciones de odoo usando Docker
 
 
 ```bash
-docker-compose build
+docker compose build
 ```
 
 ## Uso
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 ## Guia
 [YOUTUBE](https://www.youtube.com/watch?v=jkd5G6Yg2XI)
