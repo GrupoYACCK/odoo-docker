@@ -2,7 +2,7 @@ version: '3.7'
 
 services: 
     postgresql:
-        image: postgres:13
+        image: postgres:17
         #restart: always
         env_file:
             - ./postgresql/.env.dev
